@@ -1,30 +1,48 @@
 # RNA-seq Differential Expression Pipeline
 
-This project implements an end-to-end RNA-seq differential expression workflow using publicly available data from *Ramazzottius varieornatus*.
+End-to-end RNA-seq workflow for differential gene expression analysis using HISAT2, featureCounts, DESeq2, and Snakemake.
 
-## Pipeline Overview
+# OBJECTIVE
 
-SRA → FASTQ → Alignment (HISAT2) → BAM → featureCounts → DESeq2 → Visualization
+Analyze RNA-seq data from *Ramazzottius varieornatus* to identify genes differentially expressed under radiation exposure.
 
-## Tools Used
+# PIPELINE
 
-- SRA Toolkit
-- HISAT2
-- SAMtools
-- featureCounts (Subread)
-- DESeq2 (R)
-- Snakemake
+1. Data download (SRA Toolkit)
+2. Quality control (FastQC)
+3. Alignment (HISAT2)
+4. Quantification (featureCounts)
+5. Differential expression (DESeq2)
+6. Visualization (Volcano plot, Heatmap)
 
-## Outputs
+# RESULTS
 
-- Volcano plot
-- Heatmap
-- Gene count matrix
+- Volcano plot showing differential gene expression
+- Heatmap of top 50 genes
 
-## Key Learning
+### ▶ How to Run
 
-The hardest part of RNA-seq analysis is not the statistics — it is building a working, reproducible pipeline.
+```bash
+git clone https://github.com/Dr-Sushant/rnaseq-differential-expression-pipeline.git
+cd rnaseq-differential-expression-pipeline
+snakemake --cores 4
+```
 
-## Note
+## 📁 Project Structure
 
-Raw FASTQ and BAM files are excluded due to size.
+```
+workflow/   # Snakefile
+scripts/    # R scripts
+results/    # output plots
+data/       # raw data (ignored)
+```
+
+## 🔬 Pipeline Overview
+
+SRA → FASTQ → HISAT2 → BAM → featureCounts → Count Matrix → DESeq2 → Visualization
+
+---
+
+## 💡 Note
+
+This project demonstrates a reproducible RNA-seq analysis workflow integrating alignment, quantification, and statistical modeling using Snakemake.
